@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaOfPirates", "Assembly-CSharp.csproj", "{94F87B99-91E0-B212-1847-4AA0FA34E7D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaOfPirates", "Assembly-CSharp-Editor.csproj", "{AADB62FD-D5D9-B1AB-8DC3-77188CA77710}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94F87B99-91E0-B212-1847-4AA0FA34E7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F87B99-91E0-B212-1847-4AA0FA34E7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F87B99-91E0-B212-1847-4AA0FA34E7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F87B99-91E0-B212-1847-4AA0FA34E7D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AADB62FD-D5D9-B1AB-8DC3-77188CA77710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AADB62FD-D5D9-B1AB-8DC3-77188CA77710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AADB62FD-D5D9-B1AB-8DC3-77188CA77710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AADB62FD-D5D9-B1AB-8DC3-77188CA77710}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
