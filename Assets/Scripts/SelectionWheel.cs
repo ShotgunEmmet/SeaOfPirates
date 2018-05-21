@@ -85,11 +85,11 @@ public class SelectionWheel : MonoBehaviour {
                 {
                     if(count < inventory.items.Count)
                     {
-                        (spriteRenderer as SpriteRenderer).sprite = inventory.items[count].inventoryImage;
+                        spriteRenderer.sprite = inventory.items[count].inventoryImage;
                     }
                     else
                     {
-                        (spriteRenderer as SpriteRenderer).sprite = null;
+                        spriteRenderer.sprite = null;
                     }
                     count++;
                 }
@@ -133,7 +133,7 @@ public class SelectionWheel : MonoBehaviour {
         currentlySelected = selections[selection].gameObject;
 
         currentlySelected.transform.localScale = Vector3.one * 1.2f;
-        (currentlySelected.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer).color = new Color(1f, 1f, 1f, 0.8f);
+        currentlySelected.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.8f);
 
         Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
         if (selection < inventory.items.Count)
@@ -150,7 +150,7 @@ public class SelectionWheel : MonoBehaviour {
     {
         if (currentlySelected) {
             currentlySelected.transform.localScale = Vector3.one * 0.9f;
-            (currentlySelected.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer).color = new Color(1f, 1f, 1f, 0.6f);
+            currentlySelected.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.6f);
 
             currentlySelected = null;
         }

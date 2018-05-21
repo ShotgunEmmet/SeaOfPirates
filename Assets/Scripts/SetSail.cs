@@ -6,18 +6,18 @@ public class SetSail : MonoBehaviour {
 
     private float activated = 1f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.name.Equals("Player"))
-            if ((collision.gameObject.GetComponent(typeof(Move)) as Move).Controlled)
-                (GameObject.FindGameObjectWithTag("Prompt").GetComponent(typeof(Prompt)) as Prompt).Show("Press <sprite=8> to Board Ship");
+        if (collider.gameObject.name.Equals("Player"))
+            if (GameObject.FindWithTag("InputManager").GetComponent<InputManager>().controlableCharacter.Equals(collider.GetComponent<Move>()))
+                    GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Show("Press <sprite=8> to Board Ship");
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collision.gameObject.name.Equals("Player"))
+        if (collider.gameObject.name.Equals("Player"))
         {
-            if ((collision.gameObject.GetComponent(typeof(Move)) as Move).Controlled)
+            if (GameObject.FindWithTag("InputManager").GetComponent<InputManager>().controlableCharacter.Equals(collider.GetComponent<Move>()))
                 {
                 if (activated < 0)
                 {
@@ -26,14 +26,13 @@ public class SetSail : MonoBehaviour {
 
                         activated = 1f;
                         
-                        (collision.gameObject.GetComponent(typeof(Move)) as Move).Controlled = false;
-                        (collision.gameObject.GetComponent(typeof(Move)) as Move).SetActive(false);
+                        collider.gameObject.GetComponent<Move>().SetActive(false);
                         
-                        (GameObject.Find("Ship").GetComponent(typeof(Move)) as Move).Controlled = true;
 
                         Camera.SetFocus(GameObject.Find("Ship"));
+                        GameObject.FindWithTag("InputManager").GetComponent<InputManager>().controller = GameObject.Find("Ship").GetComponent<Move>();
 
-                        (GameObject.FindGameObjectWithTag("Prompt").GetComponent(typeof(Prompt)) as Prompt).Show("Press <sprite=8> to Dock");
+                        GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Show("Press <sprite=8> to Dock");
                     }
                 }
                 else
@@ -44,10 +43,10 @@ public class SetSail : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collision.gameObject.name.Equals("Player"))
-            (GameObject.FindGameObjectWithTag("Prompt").GetComponent(typeof(Prompt)) as Prompt).Hide();
+        if (collider.gameObject.name.Equals("Player"))
+            GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Hide();
     }
 
 }

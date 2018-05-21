@@ -13,29 +13,30 @@ public class EnterVehicle : MonoBehaviour
 
     private float activated = 0f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("in: "+ collision.gameObject.name);
-        if (collision.gameObject.name.Equals("Player"))
+        Debug.Log("in: "+ collider.gameObject.name);
+        if (collider.gameObject.name.Equals("Player"))
             Camera.ShowPrompt(true);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         if (activated < 0)
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (collision.gameObject.name.Equals("Player"))
+                if (collider.gameObject.name.Equals("Player"))
                 {
                     activated = 1f;
 
-                    //(this.GetComponent("SpriteRenderer") as SpriteRenderer).enabled = false;
-                    
-                    (collision.gameObject.GetComponent(typeof(Move)) as Move).Controlled = false;
-                    (collision.gameObject.GetComponent(typeof(Move)) as Move).SetActive(false);
-                    vehicle.Controlled = true;
+                    //this.GetComponent<SpriteRenderer>().enabled = false;
+
+                    //collider.gameObject.GetComponent<Move>().Controlled = false;
+                    collider.gameObject.GetComponent<Move>().SetActive(false);
+                    //vehicle.Controlled = true;
                     Camera.SetFocus(vehicle.gameObject);
+                    GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = vehicle.gameObject.GetComponent<Move>();
                 }
             }
         }
@@ -54,13 +55,14 @@ public class EnterVehicle : MonoBehaviour
                 {
                     activated = 1f;
 
-                    //(this.GetComponent("SpriteRenderer") as SpriteRenderer).enabled = true;
+                    //this.GetComponent<SpriteRenderer>().enabled = true;
                     
-                    (GameObject.Find("Player").GetComponent(typeof(Move)) as Move).Controlled = true;
-                    (GameObject.Find("Player").GetComponent(typeof(Move)) as Move).SetActive(true);
+                    //GameObject.Find("Player").GetComponent<Move>().Controlled = true;
+                    GameObject.Find("Player").GetComponent<Move>().SetActive(true);
                     GameObject.Find("Player").transform.position = exit.position;
-                    vehicle.Controlled = false;
+                    //vehicle.Controlled = false;
                     Camera.SetFocus(GameObject.Find("Player"));
+                    GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = GameObject.Find("Player").GetComponent<Move>();
                 }
             }
         }
@@ -70,10 +72,10 @@ public class EnterVehicle : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("out: " + collision.gameObject.name);
-        if (collision.gameObject.name.Equals("Player"))
+        Debug.Log("out: " + collider.gameObject.name);
+        if (collider.gameObject.name.Equals("Player"))
             Camera.ShowPrompt(false);
     }
 

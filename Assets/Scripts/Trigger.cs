@@ -31,7 +31,7 @@ public class Trigger : MonoBehaviour {
         { 
             if(collider.gameObject.Equals(concern))
             {
-                (GameObject.FindGameObjectWithTag("Prompt").GetComponent(typeof(Prompt)) as Prompt).Show("Press <sprite=8> to Open");
+                GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Show("Press <sprite=8> to Open");
             }
         }
     }
@@ -46,7 +46,7 @@ public class Trigger : MonoBehaviour {
                 {
                     target.GetComponent<ITriggerable>().Trigger();
                     triggered = true;
-                    (GameObject.FindGameObjectWithTag("Prompt").GetComponent(typeof(Prompt)) as Prompt).Hide();
+                    GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Hide();
                 }
             }
         }
@@ -58,7 +58,7 @@ public class Trigger : MonoBehaviour {
         {
             if (collider.gameObject.Equals(concern))
             {
-                (GameObject.FindGameObjectWithTag("Prompt").GetComponent(typeof(Prompt)) as Prompt).Hide();
+                GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Hide();
             }
         }
     }

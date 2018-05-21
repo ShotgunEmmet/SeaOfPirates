@@ -9,7 +9,7 @@ public class Roofs : MonoBehaviour {
     {
         Debug.Log("in: " + collision.gameObject.name);
         if (collision.gameObject.name.Equals("Player"))
-            (gameObject.GetComponent("TilemapRenderer") as TilemapRenderer).enabled = false;
+            gameObject.GetComponent<TilemapRenderer>().enabled = false;
     }
     
 
@@ -17,6 +17,6 @@ public class Roofs : MonoBehaviour {
     {
         Debug.Log("out: " + collision.gameObject.name);
         if (collision.gameObject.name.Equals("Player"))
-            (gameObject.GetComponent("TilemapRenderer") as TilemapRenderer).enabled = true;
+            gameObject.GetComponent<TilemapRenderer>().enabled = true;
     }
 }

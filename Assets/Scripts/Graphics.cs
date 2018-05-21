@@ -38,7 +38,7 @@ public class Graphics : MonoBehaviour {
 
     public void SetSprite()
     {
-        (this.gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer).sprite = direction[animationTile];
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = direction[animationTile];
     }
 
     private void CreateTrail(float angle)
@@ -51,7 +51,7 @@ public class Graphics : MonoBehaviour {
 
                 var newProjectile = Instantiate(trail);
                 newProjectile.transform.position += oldPos;
-                (newProjectile.GetComponent(typeof(WaterWake)) as WaterWake).SetDirection(angle);
+                newProjectile.GetComponent<WaterWake>().SetDirection(angle);
 
             }
         }

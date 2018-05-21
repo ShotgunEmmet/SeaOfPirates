@@ -42,7 +42,7 @@ public class Chest : MonoBehaviour, ITriggerable {
                     else if (animationType.Equals(AnimationType.loop))
                     {
                         animationFrame = 0;
-                        (gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer).sprite = frames[animationFrame];
+                        gameObject.GetComponent<SpriteRenderer>().sprite = frames[animationFrame];
                     }
                     else if (animationType.Equals(AnimationType.destroy))
                     {
@@ -51,7 +51,7 @@ public class Chest : MonoBehaviour, ITriggerable {
                 }
                 else
                 {
-                    (gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer).sprite = frames[animationFrame];
+                    gameObject.GetComponent<SpriteRenderer>().sprite = frames[animationFrame];
                 }
                 
             }

@@ -91,7 +91,7 @@ public class WaterWake : MonoBehaviour {
             direction = NA;
             if(angle > 0 && angle < 180)
             {
-                (gameObject.GetComponent("SpriteRenderer") as SpriteRenderer).flipX = true;
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
             }
         }
 
@@ -100,6 +100,6 @@ public class WaterWake : MonoBehaviour {
 
     private void SetSprite()
     {
-        (this.gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer).sprite = direction[currentFrame];
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = direction[currentFrame];
     }
 }

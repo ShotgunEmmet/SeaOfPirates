@@ -14,7 +14,7 @@ public static class Camera {
     public static void ShowPrompt(bool status)
     {
         GameObject prompt = GameObject.Find("Prompt");
-        (prompt.GetComponent("SpriteRenderer") as SpriteRenderer).enabled = status;
+        prompt.GetComponent<SpriteRenderer>().enabled = status;
     }
 
 }
