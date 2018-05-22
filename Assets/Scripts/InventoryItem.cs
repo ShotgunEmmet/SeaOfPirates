@@ -7,5 +7,5 @@ public class InventoryItem : MonoBehaviour
 
     public Sprite inventoryImage;
 
-    public virtual void Use(Vector3 position, Vector3 direction) { }
+    public virtual void Use(GameObject emitter, Vector3 direction) { }
 }

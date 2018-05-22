@@ -38,23 +38,19 @@ public class BoatControls : Move, IControllable
 
             if (Input.GetButtonDown("Fire2"))
             {
-                Use(transform.position, oldMove);
+                Use(oldMove);
             }
 
             if (Input.GetAxis("Left_Trigger").Equals(1) && gameObject.name.Equals("Ship"))
             {
                 Vector3 leftSide = Quaternion.AngleAxis(90, Vector3.forward) * oldMove;
-                Use(transform.position + oldMove.normalized * 0.7f, leftSide);
-                Use(transform.position, leftSide);
-                Use(transform.position - oldMove.normalized * 0.7f, leftSide);
+                Use(leftSide);
             }
 
             if (Input.GetAxis("Right_Trigger").Equals(1) && gameObject.name.Equals("Ship"))
             {
                 Vector3 rightSide = Quaternion.AngleAxis(-90, Vector3.forward) * oldMove;
-                Use(transform.position + oldMove.normalized * 0.7f, rightSide);
-                Use(transform.position, rightSide);
-                Use(transform.position - oldMove.normalized * 0.7f, rightSide);
+                Use(rightSide);
             }
 
             if (Input.GetButtonDown("Fire3"))
@@ -62,6 +58,8 @@ public class BoatControls : Move, IControllable
                 GameObject.FindObjectOfType<MiniMap>().Show();
                 controlType = ControlType.map;
             }
+
+            GameObject.FindObjectOfType<SelectionWheel>().UpdateSelection(gameObject.GetComponent<Inventory>());
         }
         else if (controlType.Equals(ControlType.map))
         {
@@ -73,12 +71,12 @@ public class BoatControls : Move, IControllable
         }
     }
 
-    public void Use(Vector3 position, Vector3 forward)
+    public void Use(Vector3 forward)
     {
-        Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        Inventory inventory = gameObject.GetComponent<Inventory>();
         if (inventory.selectedItem)
         {
-            inventory.selectedItem.GetComponent<InventoryItem>().Use(position, forward);
+            inventory.selectedItem.GetComponent<InventoryItem>().Use(gameObject, forward);
         }
     }
 }

@@ -40,6 +40,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryImage: {fileID: 21300000, guid: 973b9ec742662e44f851231e243e3d24, type: 3}
   bullet: {fileID: 1978997647556194, guid: d05719abd153b7c4c931e11dd134ff3a, type: 2}
+  projectileSpeed: 2
+  firingRate: 1
 --- !u!224 &224519097586854460
 RectTransform:
   m_ObjectHideFlags: 1

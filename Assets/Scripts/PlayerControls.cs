@@ -47,6 +47,8 @@ public class PlayerControls : Move, IControllable {
                 GameObject.FindObjectOfType<MiniMap>().Show();
                 controlType = ControlType.map;
             }
+
+            GameObject.FindObjectOfType<SelectionWheel>().UpdateSelection(gameObject.GetComponent<Inventory>());
         }
         else if (controlType.Equals(ControlType.map))
         {
@@ -61,10 +63,10 @@ public class PlayerControls : Move, IControllable {
     
     public void Use()
     {
-        Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        Inventory inventory = gameObject.GetComponent<Inventory>();
         if (inventory.selectedItem)
         {
-            inventory.selectedItem.GetComponent<InventoryItem>().Use(transform.position, oldMove);
+            inventory.selectedItem.GetComponent<InventoryItem>().Use(gameObject, oldMove);
         }
     }
 }

@@ -12,7 +12,7 @@ public class SelectionWheel : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        SetVisibility(showWheel);
+        SetVisibility(showWheel, null);
         selections.Add(T);
         selections.Add(TR);
         selections.Add(R);
@@ -24,7 +24,7 @@ public class SelectionWheel : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update ()
+	public void UpdateSelection (Inventory inventory)
     {
         
 
@@ -33,7 +33,7 @@ public class SelectionWheel : MonoBehaviour {
             if(!showWheel)
             {
                 showWheel = true;
-                SetVisibility(showWheel);
+                SetVisibility(showWheel, inventory);
             }
 
         }
@@ -42,7 +42,7 @@ public class SelectionWheel : MonoBehaviour {
             if (showWheel)
             {
                 showWheel = false;
-                SetVisibility(showWheel);
+                SetVisibility(showWheel, inventory);
             }
         }
 
@@ -59,20 +59,20 @@ public class SelectionWheel : MonoBehaviour {
 
                 angle += 180f;
 
-                Select(angle);
+                Select(angle, inventory);
 
             }
         }
     }
 
-    private void SetVisibility(bool visible)
+    private void SetVisibility(bool visible, Inventory inventory)
     {
         Component[] spriteRenderers;
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
         //TODO: Remove these two lines and fix the if statement below
         int count = 0;
-        Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        //Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
 
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
@@ -98,7 +98,7 @@ public class SelectionWheel : MonoBehaviour {
         
     }
 
-    private void Select(float angle)
+    private void Select(float angle, Inventory inventory)
     {
         DeselectItem();
 
@@ -125,17 +125,16 @@ public class SelectionWheel : MonoBehaviour {
         else
             newSelection = 0;
 
-        SelectItem(newSelection);
+        SelectItem(newSelection, inventory);
     }
 
-    private void SelectItem(int selection)
+    private void SelectItem(int selection, Inventory inventory)
     {
         currentlySelected = selections[selection].gameObject;
 
         currentlySelected.transform.localScale = Vector3.one * 1.2f;
         currentlySelected.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.8f);
-
-        Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        
         if (selection < inventory.items.Count)
         {
             inventory.selectedItem = inventory.items[selection];
