@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Prompt
   - InputManager
+  - MiniMapCamera
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Rocks
   - People
   - Ships
-  - 
+  - MiniMap
   - 
   - 
   - 

@@ -35,7 +35,7 @@ public class Dock : MonoBehaviour {
                         GameObject.Find("Player").GetComponent<Move>().SetActive(true);
                         GameObject.Find("Player").transform.position = exit.position;
 
-                        Camera.SetFocus(GameObject.Find("Player"));
+                        GameCamera.SetFocus(GameObject.Find("Player"));
                         GameObject.FindWithTag("InputManager").GetComponent<InputManager>().controller = GameObject.Find("Player").GetComponent<Move>();
 
                         GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Hide();

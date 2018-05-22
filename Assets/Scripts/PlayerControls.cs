@@ -3,39 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControls : Move, IControllable {
-    
+
+    private enum ControlType { move, selection, map, menu};
+    private ControlType controlType;
+
     public void Reset()
     {
         speed = 2f;
+        controlType = ControlType.move;
     }
 
     public void Respond()
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        
-        var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 
-        if (move.magnitude > .04f)
+        if (controlType.Equals(ControlType.move))
         {
-            oldMove = move;
+            var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 
-            gameObject.GetComponent<Rigidbody2D>().velocity = move * speed;
+            if (move.magnitude > .04f)
+            {
+                oldMove = move;
 
-            float angle = Vector3.Angle(move, transform.up);
+                gameObject.GetComponent<Rigidbody2D>().velocity = move * speed;
 
-            if (move.x > 0f)
-                angle = -angle;
+                float angle = Vector3.Angle(move, transform.up);
 
-            angle += 180f;
+                if (move.x > 0f)
+                    angle = -angle;
 
-            graphics.Move(angle);
+                angle += 180f;
+
+                graphics.Move(angle);
+            }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                Use();
+            }
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                GameObject.FindObjectOfType<MiniMap>().Show();
+                controlType = ControlType.map;
+            }
+        }
+        else if (controlType.Equals(ControlType.map))
+        {
+            if (Input.GetButtonDown("Fire3"))
+            {
+                GameObject.FindObjectOfType<MiniMap>().Hide();
+                controlType = ControlType.move;
+            }
         }
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            Use();
-        }
-            
     }
     
     public void Use()

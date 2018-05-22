@@ -17,7 +17,7 @@ public class EnterVehicle : MonoBehaviour
     {
         Debug.Log("in: "+ collider.gameObject.name);
         if (collider.gameObject.name.Equals("Player"))
-            Camera.ShowPrompt(true);
+            GameCamera.ShowPrompt(true);
     }
 
     private void OnTriggerStay2D(Collider2D collider)
@@ -35,7 +35,7 @@ public class EnterVehicle : MonoBehaviour
                     //collider.gameObject.GetComponent<Move>().Controlled = false;
                     collider.gameObject.GetComponent<Move>().SetActive(false);
                     //vehicle.Controlled = true;
-                    Camera.SetFocus(vehicle.gameObject);
+                    GameCamera.SetFocus(vehicle.gameObject);
                     GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = vehicle.gameObject.GetComponent<Move>();
                 }
             }
@@ -61,7 +61,7 @@ public class EnterVehicle : MonoBehaviour
                     GameObject.Find("Player").GetComponent<Move>().SetActive(true);
                     GameObject.Find("Player").transform.position = exit.position;
                     //vehicle.Controlled = false;
-                    Camera.SetFocus(GameObject.Find("Player"));
+                    GameCamera.SetFocus(GameObject.Find("Player"));
                     GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = GameObject.Find("Player").GetComponent<Move>();
                 }
             }
@@ -76,7 +76,7 @@ public class EnterVehicle : MonoBehaviour
     {
         Debug.Log("out: " + collider.gameObject.name);
         if (collider.gameObject.name.Equals("Player"))
-            Camera.ShowPrompt(false);
+            GameCamera.ShowPrompt(false);
     }
 
 }

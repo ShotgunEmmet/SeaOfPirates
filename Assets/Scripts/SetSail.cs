@@ -27,9 +27,9 @@ public class SetSail : MonoBehaviour {
                         activated = 1f;
                         
                         collider.gameObject.GetComponent<Move>().SetActive(false);
-                        
 
-                        Camera.SetFocus(GameObject.Find("Ship"));
+
+                        GameCamera.SetFocus(GameObject.Find("Ship"));
                         GameObject.FindWithTag("InputManager").GetComponent<InputManager>().controller = GameObject.Find("Ship").GetComponent<Move>();
 
                         GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Show("Press <sprite=8> to Dock");
