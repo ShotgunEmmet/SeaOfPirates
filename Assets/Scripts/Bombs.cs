@@ -8,7 +8,7 @@ public class Bombs : InventoryItem {
 
     public override void Use(GameObject emitter, Vector3 direction)
     {
-        var newProjectile = Instantiate(bomb);
-        newProjectile.transform.position += emitter.transform.position + direction.normalized * 0.5f;
+        var bomb = Instantiate(this.bomb);
+        bomb.transform.position += emitter.transform.position + direction.normalized * 0.5f;
     }
 }

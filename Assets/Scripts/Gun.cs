@@ -15,8 +15,12 @@ public class Gun : InventoryItem
     {
         direction.Normalize();
 
-        var newProjectile = Instantiate(bullet);
-        newProjectile.transform.position += emitter.transform.position + direction * 0.5f;
-        newProjectile.GetComponent<Rigidbody2D>().velocity = emitter.GetComponent<Rigidbody2D>().velocity + (new Vector2(direction.x, direction.y) * projectileSpeed);
+        var bullet = Instantiate(this.bullet);
+        bullet.transform.position += emitter.transform.position + direction * 0.5f;
+        bullet.GetComponent<Rigidbody2D>().velocity = emitter.GetComponent<Rigidbody2D>().velocity + (new Vector2(direction.x, direction.y) * projectileSpeed);
+        bullet.GetComponent<Bullet>().emitter = emitter;
+
+        bullet.GetComponent<AudioSource>().Play();
     }
+    
 }

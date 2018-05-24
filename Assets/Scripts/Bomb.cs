@@ -30,13 +30,18 @@ public class Bomb : MonoBehaviour {
         {
             timePassed = 0f;
             currentFrame++;
-            if (currentFrame.Equals(animationFrames.Count))
+            if (currentFrame < animationFrames.Count)
             {
-                GameObject.Destroy(gameObject);
+                gameObject.GetComponent<SpriteRenderer>().sprite = animationFrames[currentFrame];
+            }
+            else if (currentFrame.Equals(animationFrames.Count))
+            {
+                gameObject.GetComponent<AudioSource>().Play();
             }
             else
             {
-                gameObject.GetComponent<SpriteRenderer>().sprite = animationFrames[currentFrame];
+                if (gameObject.GetComponent<AudioSource>().isPlaying.Equals(false))
+                    GameObject.Destroy(gameObject);
             }
         }
 
