@@ -10,8 +10,7 @@ public class Move : MonoBehaviour {
 
     protected Vector3 oldMove = Vector3.down;
 
-	// Use this for initialization
-	void Start () {
+    void Start () {
         graphics = gameObject.GetComponent<Graphics>();
     }
 
