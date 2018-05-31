@@ -6,40 +6,48 @@ using UnityEngine.UI;
 public class MyAnimationManager : AnimationManager2D
 {
 
+    void Start()
+    {
+        RunAnimation("idle");
+        GameObject.Find("DebugOutput").GetComponent<Text>().text = "Idle";
+        
+    }
+
     void Update()
     {
-
         if (Input.GetKeyUp("s"))
         {
-            currentAnimation.Stop();
+            Stop();
             GameObject.Find("DebugOutput").GetComponent<Text>().text = "Stop";
         }
 
         if (Input.GetKeyUp("d"))
         {
-            RunAnimation("Walk_R");
+            RunAnimation("right");
             GameObject.Find("DebugOutput").GetComponent<Text>().text = "Walk Right";
         }
 
         if (Input.GetKeyUp("a"))
         {
-            RunAnimation("Walk_L");
+            RunAnimation("left");
             GameObject.Find("DebugOutput").GetComponent<Text>().text = "Walk Left";
         }
 
         if (Input.GetKeyUp("p"))
         {
-            if (currentAnimation.State().Equals(Animation2D.AnimationState.playing))
+            if (animationState.Equals(AnimationState.playing))
             {
-                currentAnimation.Pause();
+                Pause();
                 GameObject.Find("DebugOutput").GetComponent<Text>().text = "Pause";
             }
             else
             {
-                currentAnimation.Play();
+                Play();
                 GameObject.Find("DebugOutput").GetComponent<Text>().text = "Play";
             }
         }
+
+        base.Update();
     }
 
 }

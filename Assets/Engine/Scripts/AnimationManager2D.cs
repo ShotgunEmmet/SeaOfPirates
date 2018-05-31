@@ -3,53 +3,79 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimationManager2D : MonoBehaviour {
+public class AnimationManager2D : MonoBehaviour
+{
 
     public List<Animation2D> animations;
     protected Animation2D currentAnimation;
+    
+    protected enum AnimationState { stopped, paused, playing };
+    protected AnimationState animationState;
+    
+    private int currentFrame;
+    private float timePassed;
 
 
-	private void Start ()
+    protected void Update()
     {
-        InstantiateAnimations();
-        RunAnimation("Idle");
-        GameObject.Find("DebugOutput").GetComponent<Text>().text = "Idle";
-    }
-
-    private void InstantiateAnimations()
-    {
-        GameObject animationContainer = GameObject.Find("AnimationContainer");
-        if (animationContainer == null)
+        if (animationState.Equals(AnimationState.playing))
         {
-            animationContainer = new GameObject("AnimationContainer");
-            animationContainer.transform.parent = transform;
-        }
+            timePassed += Time.deltaTime;
+            if (timePassed >= currentAnimation.animationSpeed)
+            {
+                timePassed -= currentAnimation.animationSpeed;
 
-        for (int i = 0; i < animations.Count; i++)
-        {
-            var a = Instantiate(animations[i].gameObject);
-            a.transform.parent = animationContainer.transform;
-            animations[i] = a.GetComponent<Animation2D>();
+                currentFrame++;
+                currentFrame %= currentAnimation.animationFrames.Count;
+
+                UpdateFrame();
+            }
         }
     }
 
     protected void RunAnimation(string animationName)
     {
+        ResetAnimation();
         foreach (Animation2D animation in animations)
         {
-            if (animation.animationName.Equals(animationName))
+            if (animation.animationName.Equals(animationName, System.StringComparison.InvariantCultureIgnoreCase))
             {
-                if(currentAnimation)
-                    currentAnimation.Stop();
+                if (currentAnimation)
+                    Stop();
                 currentAnimation = animation;
-                currentAnimation.PlayAnimation(UpdateSprite);
+                animationState = AnimationState.playing;
+                UpdateFrame();
             }
         }
     }
 
-    //This function is only called from a corouteen in Animation2D
-    private void UpdateSprite(Sprite newSprite)
+    protected void Play()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
+        animationState = AnimationState.playing;
     }
+
+    protected void Pause()
+    {
+        timePassed = currentAnimation.animationSpeed;
+        animationState = AnimationState.paused;
+    }
+
+    public void Stop()
+    {
+        ResetAnimation();
+        animationState = AnimationState.stopped;
+    }
+
+    private void ResetAnimation()
+    {
+        timePassed = 0f;
+        currentFrame = 0;
+        animationState = AnimationState.stopped;
+    }
+
+    private void UpdateFrame()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = currentAnimation.animationFrames[currentFrame];
+    }
+
 }
