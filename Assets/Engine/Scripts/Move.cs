@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour {
-    
+
     public float speed = 1f;
 
-    protected Graphics graphics;
+    protected AnimationManager2D animationManager;
 
     protected Vector3 oldMove = Vector3.down;
 
-    void Start () {
-        graphics = gameObject.GetComponent<Graphics>();
+    void Start()
+    {
+        animationManager = gameObject.GetComponent<AnimationManager2D>();
     }
 
     public void Reset(Vector3 position)
     {
         transform.position = position;
-        graphics.ResetLook();
+        animationManager.Stop();
     }
 
     public void SetActive(bool active)
@@ -26,5 +27,5 @@ public class Move : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().enabled = active;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
-    
+
 }

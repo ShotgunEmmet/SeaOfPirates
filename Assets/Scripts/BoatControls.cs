@@ -33,7 +33,7 @@ public class BoatControls : Move, IControllable
 
                 angle += 180f;
 
-                graphics.Move(angle);
+                (animationManager as PlayerAnimationManager).Move(angle);
             }
 
             if (Input.GetButtonDown("Fire2"))

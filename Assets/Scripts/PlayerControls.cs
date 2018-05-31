@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControls : Move, IControllable {
+public class PlayerControls : Move, IControllable
+{
 
-    private enum ControlType { move, selection, map, menu};
+    private enum ControlType { move, selection, map, menu };
     private ControlType controlType;
 
     public void Reset()
@@ -34,7 +35,11 @@ public class PlayerControls : Move, IControllable {
 
                 angle += 180f;
 
-                graphics.Move(angle);
+                (animationManager as PlayerAnimationManager).Move(angle);
+            }
+            else
+            {
+                animationManager.Stop();
             }
 
             if (Input.GetButtonDown("Fire2"))
@@ -60,7 +65,7 @@ public class PlayerControls : Move, IControllable {
         }
 
     }
-    
+
     public void Use()
     {
         Inventory inventory = gameObject.GetComponent<Inventory>();
