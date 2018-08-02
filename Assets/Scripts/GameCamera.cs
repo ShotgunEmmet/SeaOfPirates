@@ -6,7 +6,7 @@ public static class GameCamera {
     
 	public static void SetFocus(GameObject subject)
     {
-        GameObject camera = GameObject.Find("Main Camera");
+        GameObject camera = Camera.main.gameObject;
         camera.transform.position = new Vector3(subject.transform.position.x, subject.transform.position.y, camera.transform.position.z);
         camera.transform.SetParent(subject.transform);
     }

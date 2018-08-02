@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Move : MonoBehaviour {
+public class Move : NetworkBehaviour {
 
     public float speed = 1f;
 
@@ -26,6 +27,10 @@ public class Move : MonoBehaviour {
         gameObject.GetComponent<BoxCollider2D>().enabled = active;
         gameObject.GetComponent<SpriteRenderer>().enabled = active;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+    }
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
     }
 
 }
