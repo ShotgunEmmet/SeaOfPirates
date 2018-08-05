@@ -14,21 +14,41 @@ public class MiniMap : MonoBehaviour {
 
     private void Start()
     {
-        map = gameObject.GetComponent<RawImage>();
-        miniMapCamera = GameObject.FindWithTag("MiniMapCamera").GetComponent<Camera>();
+        GetMap();
+        GetMiniMapCamera();
+        HideMap();
+    }
 
-        Hide();
+    private void GetMap()
+    {
+        map = gameObject.GetComponent<RawImage>();
+    }
+
+    private void GetMiniMapCamera()
+    {
+        var cameraGameObject = GameObject.FindWithTag("MiniMapCamera");
+        if (cameraGameObject != null)
+        {
+            miniMapCamera = GameObject.FindWithTag("MiniMapCamera").GetComponent<Camera>();
+        }
     }
 
     private void Update()
     {
-        if (map.enabled)
+        UpdateMiniMap();
+    }
+
+    private void UpdateMiniMap()
+    {
+        if (map.enabled && miniMapCamera != null)
         {
             if (Input.GetAxis("Left_Trigger").Equals(1))
             {
                 miniMapCamera.orthographicSize -= Time.deltaTime * zoomSpeed;
                 if (miniMapCamera.orthographicSize < minZoom)
+                {
                     miniMapCamera.orthographicSize = minZoom;
+                }
             }
 
             if (Input.GetAxis("Right_Trigger").Equals(1))
@@ -40,17 +60,17 @@ public class MiniMap : MonoBehaviour {
         }
     }
 
-    public void ToggleShow()
+    public void ToggleShowMap()
     {
         map.enabled = !map.enabled;
     }
 
-    public void Show()
+    public void ShowMap()
     {
         map.enabled = true;
     }
 
-    public void Hide()
+    public void HideMap()
     {
         map.enabled = false;
     }

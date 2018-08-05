@@ -55,7 +55,7 @@ public class BoatControls : Move, IControllable
 
             if (Input.GetButtonDown("Fire3"))
             {
-                GameObject.FindObjectOfType<MiniMap>().Show();
+                GameObject.FindObjectOfType<MiniMap>().ShowMap();
                 controlType = ControlType.map;
             }
 
@@ -65,7 +65,7 @@ public class BoatControls : Move, IControllable
         {
             if (Input.GetButtonDown("Fire3"))
             {
-                GameObject.FindObjectOfType<MiniMap>().Hide();
+                GameObject.FindObjectOfType<MiniMap>().HideMap();
                 controlType = ControlType.move;
             }
         }

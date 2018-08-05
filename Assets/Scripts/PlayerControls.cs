@@ -12,6 +12,8 @@ public class PlayerControls : Move, IControllable
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float angle = 0;
+    public float bulletSpeed = 5f;
+    public float bulletLifeTime = 5f;
     public void Reset()
     {
         speed = 2f;
@@ -60,14 +62,14 @@ public class PlayerControls : Move, IControllable
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
             bulletSpawn.position,
-            bulletSpawn.rotation);
-        
-        Vector2 bulletDirection = (Vector2)(Quaternion.Euler(0, 0, angle - 90) * Vector2.right);
-        bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * 6;
-        Debug.Log("bullet direction: -" + bulletDirection);
-        Debug.Log("bullet position: -" + bullet.transform.position);
+            Quaternion.identity);
+
+        var bullet2D = bullet.GetComponent<Rigidbody2D>(); 
+        bullet2D.velocity = transform.right * bulletSpeed;
+        Destroy(bullet, bulletLifeTime);
+
         NetworkServer.Spawn(bullet);
-        Destroy(bullet, 5.0f);
+
     }
     public void Respond()
     {
@@ -104,7 +106,7 @@ public class PlayerControls : Move, IControllable
 
             if (Input.GetButtonDown("Fire3"))
             {
-                GameObject.FindObjectOfType<MiniMap>().Show();
+                GameObject.FindObjectOfType<MiniMap>().ShowMap();
                 controlType = ControlType.map;
             }
 
@@ -114,7 +116,7 @@ public class PlayerControls : Move, IControllable
         {
             if (Input.GetButtonDown("Fire3"))
             {
-                GameObject.FindObjectOfType<MiniMap>().Hide();
+                GameObject.FindObjectOfType<MiniMap>().HideMap();
                 controlType = ControlType.move;
             }
         }
