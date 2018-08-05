@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class Bullet : MonoBehaviour {
-
-    public GameObject emitter;
-    float destroyDistance = 11f;
-
-    void Update()
+public class Bullet : MonoBehaviour
+{
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((emitter.transform.position - transform.position).magnitude > destroyDistance)
+        var hit = collision.gameObject;
+        var health = hit.GetComponent<Health>();
+        if (health != null)
         {
-            GameObject.Destroy(gameObject);
+            health.TakeDamage(10);
         }
+        Destroy(gameObject);
     }
+
 }
