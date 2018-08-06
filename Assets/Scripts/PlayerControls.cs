@@ -11,6 +11,8 @@ public class PlayerControls : Move, IControllable
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+
+    [SyncVar(hook = "OnChangeAngle")]
     public float angle = 0;
     public float bulletSpeed = 5f;
     public float bulletLifeTime = 5f;
@@ -29,22 +31,11 @@ public class PlayerControls : Move, IControllable
         {
             return;
         }
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
         var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         //transform.Rotate(0, x, 0);
         if (move.magnitude > .04f)
         {
-            var deltaMove = move * Time.deltaTime * speed;
-            transform.Translate(deltaMove.x, deltaMove.y, 0);
-            angle = Vector3.Angle(move, transform.up);
-
-            if (move.x > 0f)
-                angle = -angle;
-
-            angle += 180f;
-
-            (animationManager as PlayerAnimationManager).Move(angle);
+            MovePlayer(move);
         }
         else
         {
@@ -55,22 +46,43 @@ public class PlayerControls : Move, IControllable
             CmdFire();
         }
     }
+
+    private void MovePlayer(Vector3 move)
+    {
+        var deltaMove = move * Time.deltaTime * speed;
+        transform.Translate(deltaMove.x, deltaMove.y, 0);
+        angle = Vector3.Angle(move, transform.up);
+
+        if (move.x > 0f)
+            angle = -angle;
+
+        angle += 180f;
+    }
+
     [Command]
     void CmdFire()
     {
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
-            bulletSpawn.position,
-            Quaternion.identity);
+            bulletSpawn.position,Quaternion.AngleAxis(angle, Vector3.forward));
 
         var bullet2D = bullet.GetComponent<Rigidbody2D>(); 
-        bullet2D.velocity = transform.right * bulletSpeed;
+        Vector2 dir = (Vector2)(Quaternion.Euler(0, 0, angle) * Vector2.down);
+        bullet2D.velocity = dir * bulletSpeed;
+
         Destroy(bullet, bulletLifeTime);
 
         NetworkServer.Spawn(bullet);
 
     }
+    void OnChangeAngle(float changedAngle)
+    {
+        Debug.Log("RoTayto!");
+        this.angle = changedAngle;
+        (animationManager as PlayerAnimationManager).Move(angle);
+    }
+
     public void Respond()
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
