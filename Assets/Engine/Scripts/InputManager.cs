@@ -9,7 +9,10 @@ public class InputManager : MonoBehaviour {
 
     private void Start()
     {
-        controlable = controlableCharacter.GetComponent<IControllable>();
+        if (controlable != null)
+        {
+            controlable = controlableCharacter.GetComponent<IControllable>();
+        }
     }
 
     // Update is called once per frame

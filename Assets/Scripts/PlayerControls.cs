@@ -31,6 +31,8 @@ public class PlayerControls : Move, IControllable
         {
             return;
         }
+        Respond();
+        /*
         var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         //transform.Rotate(0, x, 0);
         if (move.magnitude > .04f)
@@ -41,6 +43,7 @@ public class PlayerControls : Move, IControllable
         {
             animationManager.Stop();
         }
+        */
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CmdFire();
