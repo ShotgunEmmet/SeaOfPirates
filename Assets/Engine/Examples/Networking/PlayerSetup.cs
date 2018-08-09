@@ -7,7 +7,7 @@ public class PlayerSetup : NetworkBehaviour {
     [SerializeField]
     Behaviour[] componentsToDisable;
 
-    string remoteLayerName = "RemotePlayer";
+    public const string remoteLayerName = "RemotePlayer";
 
     Camera sceneCamera;
 

@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 114257398639301762}
   - component: {fileID: 114088546249541042}
   - component: {fileID: 114314238825848026}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Networked Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4100047428996740}
   - component: {fileID: 20328978100184382}
   - component: {fileID: 81929429248185380}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Main Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 1772208927038190, guid: be1663f5ec33cde4f8015bc7c504abff, type: 2}
+  bulletPrefab: {fileID: 1250529628102822, guid: ed7a525149146d649a3c4e5ec7812022,
+    type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 48951
 --- !u!114 &114188124295428934
 MonoBehaviour:
   m_ObjectHideFlags: 1

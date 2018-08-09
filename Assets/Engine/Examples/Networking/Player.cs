@@ -20,15 +20,16 @@ public class Player : NetworkBehaviour {
         currentHealth = maxHealth;
     }
 
-    internal void TakeDamage(int damage)
+    [ClientRpc]
+    internal void RpcTakeDamage(int damage)
     {
         currentHealth -= damage;
 
-        Debug.Log(transform.name + " has " + currentHealth + " health");
-
         if(currentHealth <= 0)
         {
-
+            //Die();
         }
     }
+
+    public int Health() { return currentHealth; }
 }

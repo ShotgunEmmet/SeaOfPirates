@@ -5,7 +5,8 @@ using UnityEngine.Networking;
 public class PlayerShoot : NetworkBehaviour{
 
     public GameObject bombPrefab;
-    
+    public GameObject bulletPrefab;
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -15,6 +16,10 @@ public class PlayerShoot : NetworkBehaviour{
         if (Input.GetButtonDown("Fire2"))
         {
             Punch();
+        }
+        if (Input.GetButtonDown("Fire3"))
+        {
+            ShootBullet(gameObject.name);
         }
     }
 
@@ -37,7 +42,7 @@ public class PlayerShoot : NetworkBehaviour{
     private void CmdPlayerHurt(string playerID)
     {
         Player injuredPlayer = GameManager.GetPlayer(playerID);
-        injuredPlayer.TakeDamage(10);
+        injuredPlayer.RpcTakeDamage(10);
     }
 
     [Client]
@@ -58,6 +63,29 @@ public class PlayerShoot : NetworkBehaviour{
         Vector2 offset = rb.velocity.normalized * 2f;//blank for the host
         
         var go = (GameObject)Instantiate(bombPrefab, transform.position + new Vector3(offset.x, offset.y, 0), Quaternion.identity);
+        NetworkServer.Spawn(go);
+    }
+
+
+    [Client]
+    private void ShootBullet(string playerName)
+    {
+        CmdShootBullet(playerName);
+    }
+
+    [Command]
+    private void CmdShootBullet(string playerName)
+    {
+        CreateBullet(playerName);
+    }
+
+    private void CreateBullet(string playerName)
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 offset = rb.velocity.normalized;//blank for the host
+
+        var go = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        go.GetComponent<NetworkBullet>().Setup(new Vector3(offset.x, offset.y, 0), playerName);
         NetworkServer.Spawn(go);
     }
 }
