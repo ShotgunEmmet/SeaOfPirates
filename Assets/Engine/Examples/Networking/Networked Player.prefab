@@ -187,9 +187,6 @@ MonoBehaviour:
   bombPrefab: {fileID: 1772208927038190, guid: be1663f5ec33cde4f8015bc7c504abff, type: 2}
   bulletPrefab: {fileID: 1250529628102822, guid: ed7a525149146d649a3c4e5ec7812022,
     type: 2}
-  mask:
-    serializedVersion: 2
-    m_Bits: 48951
 --- !u!114 &114188124295428934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,7 +239,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1195767069559798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b16cd5ac32fc440a02455d617fef63, type: 3}
+  m_Script: {fileID: 11500000, guid: e062ec6029b1741b491562d128587646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.4

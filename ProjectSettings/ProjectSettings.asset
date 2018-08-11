@@ -614,9 +614,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 32811bff-b1af-447a-92bf-ee1d3be5cfdd
-  projectName: Sea of Pirates (1)
-  organizationId: shotgunemmet
+  cloudProjectId: a25ccd59-4541-4955-bb30-ad0afd3cacfb
+  projectName: Sea of Pirates
+  organizationId: didactdidnothingwrong
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
