@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(WayfarerHealth))]
 public class PlayerSetup : NetworkBehaviour {
 
     [SerializeField]
@@ -33,7 +33,7 @@ public class PlayerSetup : NetworkBehaviour {
     {
         base.OnStartClient();
 
-        GameManager.RegisterPlayer(GetComponent<NetworkIdentity>().netId.ToString(), GetComponent<Player>());
+        GameManager.RegisterPlayer(GetComponent<NetworkIdentity>().netId.ToString(), GetComponent<WayfarerHealth>());
     }
 
     private void AssignRemoteLayer()

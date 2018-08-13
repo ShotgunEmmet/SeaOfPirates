@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114257398639301762}
   - component: {fileID: 114088546249541042}
   - component: {fileID: 114314238825848026}
+  - component: {fileID: 114075409980377022}
   m_Layer: 14
   m_Name: Networked Player
   m_TagString: Player
@@ -173,6 +174,20 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944208251139290}
   m_Enabled: 1
+--- !u!114 &114075409980377022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195767069559798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3107f09c06c614df984fd37749f1f83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlotA: {fileID: 0}
+  SlotB: {fileID: 0}
+  SlotC: {fileID: 0}
 --- !u!114 &114088546249541042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,7 +323,7 @@ MonoBehaviour:
   - {fileID: 114543427112581144}
   - {fileID: 20328978100184382}
   - {fileID: 81929429248185380}
-  - {fileID: 114088546249541042}
+  - {fileID: 0}
 --- !u!212 &212988624183264278
 SpriteRenderer:
   m_ObjectHideFlags: 1
