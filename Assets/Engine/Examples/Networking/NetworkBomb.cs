@@ -46,7 +46,7 @@ public class NetworkBomb : NetworkBehaviour {
         {
             if ((player.transform.position - gameObject.transform.position).magnitude < 2f)
             {
-                player.GetComponent<Player>().RpcTakeDamage(25);
+                player.GetComponent<WayfarerHealth>().RpcTakeDamage(25);
             }
         }
     }

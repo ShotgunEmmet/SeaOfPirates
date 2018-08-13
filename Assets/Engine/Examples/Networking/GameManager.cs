@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour {
 
     private const string PLAYER_ID_PREFIX = "Pleyer ";
 
-    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+    private static Dictionary<string, WayfarerHealth> players = new Dictionary<string, WayfarerHealth>();
 
-    internal static void RegisterPlayer(string netID, Player player)
+    internal static void RegisterPlayer(string netID, WayfarerHealth player)
     {
         string playerID = PLAYER_ID_PREFIX + netID;
         players.Add(playerID, player);
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
         players.Remove(playerID);
     }
 
-    internal static Player GetPlayer(string playerID)
+    internal static WayfarerHealth GetPlayer(string playerID)
     {
         return players[playerID];
     }
