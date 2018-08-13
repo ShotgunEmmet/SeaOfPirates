@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
         foreach(string playerID in players.Keys)
         {
             GUILayout.Label(playerID);
-            GUILayout.Label("Health: " + GetPlayer(playerID).Health());
+            GUILayout.Label("Health: " + GetPlayer(playerID).currentHealth);
             GUILayout.Label("---------------");
         }
 

@@ -22,7 +22,7 @@ public class Fists : MonoBehaviour, IWeapon
     private void ApplyDamageToPlayer(string playerID)
     {
         WayfarerHealth injuredPlayer = GameManager.GetPlayer(playerID);
-        injuredPlayer.RpcTakeDamage(10);
+        injuredPlayer.TakeDamage(10);
     }
 
     // Use this for initialization

@@ -34,7 +34,7 @@ public class Blunderbuss : MonoBehaviour, IWeapon
         Vector2 dir = (Vector2)(Quaternion.Euler(0, 0, 45) * Vector2.down);
         bullet2D.velocity = dir * 2f;
 
-        Destroy(bullet, 2000);
+        Destroy(bullet, 20);
 
 
         return bullet;

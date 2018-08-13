@@ -27,26 +27,20 @@ public class NetworkBomb : NetworkBehaviour {
     }
 
 
-    [Client]
+
     private void ExplodeBomb()
     {
-        CmdCreateBomb();
-    }
+       
 
-    [Command]
-    private void CmdCreateBomb()
-    {
-        RpcDoDamage();
-    }
-
-    [ClientRpc]//not strictly necessary as the bomb damages everyone (from the servers point of view)
-    private void RpcDoDamage()
-    {
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if ((player.transform.position - gameObject.transform.position).magnitude < 2f)
             {
-                player.GetComponent<WayfarerHealth>().RpcTakeDamage(25);
+                var health = player.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(10);
+                }
             }
         }
     }

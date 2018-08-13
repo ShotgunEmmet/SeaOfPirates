@@ -45,7 +45,8 @@ public class PlayerSetup : NetworkBehaviour {
     {
         foreach (Behaviour b in componentsToDisable)
         {
-            b.enabled = false;
+            if(b!=null)
+                b.enabled = false;
         }
     }
     
