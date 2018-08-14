@@ -31,7 +31,8 @@ public class Blunderbuss : MonoBehaviour, IWeapon
             Quaternion.AngleAxis(45, Vector3.forward));
 
         var bullet2D = bullet.GetComponent<Rigidbody2D>();
-        Vector2 dir = (Vector2)(Quaternion.Euler(0, 0, 45) * Vector2.down);
+        Debug.Log("vel: " + GetComponent<Rigidbody2D>().velocity.ToString());
+        Vector2 dir = GetComponent<Rigidbody2D>().velocity.normalized;
         bullet2D.velocity = dir * 2f;
 
         Destroy(bullet, 20);

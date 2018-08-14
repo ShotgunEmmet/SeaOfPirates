@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 2
   m_SendInterval: 0.1
-  m_SyncRotationAxis: 3
+  m_SyncRotationAxis: 2
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
@@ -237,8 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d849fdd41f71d54ba705d76f417e8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 4
-  lifeTime: 3
 --- !u!212 &212179778867093374
 SpriteRenderer:
   m_ObjectHideFlags: 1

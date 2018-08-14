@@ -20,11 +20,11 @@ public class A_PlayerMovement : MonoBehaviour {
     {
         Vector2 move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed;
 
+        motor.Move(move);
         if (move.magnitude > 0.1f) { 
             animator.SetFloat("FaceX", move.x);
             animator.SetFloat("FaceY", move.y);
             animator.Play("Walk");
-            motor.Move(move);
         }
         else
         {
