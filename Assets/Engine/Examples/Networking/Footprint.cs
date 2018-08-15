@@ -6,7 +6,7 @@ public class Footprint : MonoBehaviour {
 
     private void Start()
     {
-        GetComponent<Animator>().Play("Footprints BlendTree");
+        GetComponent<Animator>().Play("Footprints");
     }
 
     void DeleteOnEnd()
