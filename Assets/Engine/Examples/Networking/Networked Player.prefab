@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4515388117022256}
   - component: {fileID: 212988624183264278}
-  - component: {fileID: 114593630390396766}
   - component: {fileID: 50054360912511800}
   - component: {fileID: 61768871038249352}
   - component: {fileID: 114188124295428934}
@@ -33,6 +32,7 @@ GameObject:
   - component: {fileID: 114075409980377022}
   - component: {fileID: 95880356657502166}
   - component: {fileID: 114527313136785584}
+  - component: {fileID: 114723179926383358}
   m_Layer: 14
   m_Name: Networked Player
   m_TagString: Player
@@ -427,23 +427,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.4
---- !u!114 &114593630390396766
+--- !u!114 &114723179926383358
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195767069559798}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97877a30726bd6d4ba0c8e3d7a9569cd, type: 3}
+  m_Script: {fileID: 11500000, guid: a5b5552e3cb0d90488e7a20e90506b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animations:
-  - {fileID: 114648639194087882, guid: 275eedc12f8a545418d77690812ebee8, type: 2}
-  - {fileID: 114613054202555616, guid: 18688028b2633fb4eb250883ac2ee7a7, type: 2}
-  - {fileID: 114018519080303866, guid: 6e818f2159485364c9d246c7f6608901, type: 2}
-  - {fileID: 114934620930692786, guid: 4c7f9bd9a3bb98a4a872a1bde4b3a901, type: 2}
-  trail: {fileID: 1200353505151658, guid: 2c339d25029d3284ea26b3921f8075ae, type: 2}
+  trail: {fileID: 1106702276441488, guid: f5678507686b0cd4b8dbf599c6ecd569, type: 2}
 --- !u!114 &114814638102333312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,7 +538,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4193e928cccbf38479c8847a473fd53b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
