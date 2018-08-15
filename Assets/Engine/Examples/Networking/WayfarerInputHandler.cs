@@ -48,6 +48,8 @@ public class WayfarerInputHandler : NetworkBehaviour{
     private void CmdFireWeaponB()
     {
         var projectile = WeaponSlotB.Fire(bulletPrefab);
+        Rigidbody2D bulletBody = projectile.GetComponent<Rigidbody2D>();
+        Debug.Log("b vel:"+bulletBody.velocity);
         CreateOnServer(projectile);
     }
     [Command]
