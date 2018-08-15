@@ -27,7 +27,7 @@ public class PlayerMotor : MonoBehaviour
     {
         if (velocity != Vector2.zero)
         {
-            rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
+            rigidbody.velocity = velocity;
         }
     }
 }
