@@ -16,7 +16,7 @@ public class MiniMapCamera : MonoBehaviour {
 
     private void Follow()
     {
-        Vector3 position = GameObject.Find("InputManager").GetComponent<InputManager>().controller.transform.position;
+        Vector3 position = GameObject.Find("InputManager").GetComponent<WayfarerInputHandler>().transform.position;
         position.y = transform.position.y;
         transform.position = position;
     }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoatControls : Move, IControllable
+public class BoatControls : MonoBehaviour, IControllable
 {
     private enum ControlType { move, selection, map, menu };
     private ControlType controlType;
-
+    [SerializeField]
+    private float speed = 2.4f;
+    Vector2 oldMove;
     public void Reset()
     {
         speed = 2f;
@@ -33,7 +35,7 @@ public class BoatControls : Move, IControllable
 
                 angle += 180f;
 
-                (animationManager as PlayerAnimationManager).Move(angle);
+                //(animationManager as PlayerAnimationManager).Move(angle);
             }
 
             if (Input.GetButtonDown("Fire2"))

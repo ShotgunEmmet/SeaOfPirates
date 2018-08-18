@@ -7,7 +7,7 @@ public class NetworkBullet : NetworkBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         var hit = collision.gameObject;
-        var health = hit.GetComponent<Health>();
+        var health = hit.GetComponent<WayfarerHealth>();
         if (health != null)
         {
             health.TakeDamage(10);

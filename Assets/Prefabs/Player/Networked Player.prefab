@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 50054360912511800}
   - component: {fileID: 61768871038249352}
   - component: {fileID: 114188124295428934}
-  - component: {fileID: 114543427112581144}
   - component: {fileID: 114814638102333312}
   - component: {fileID: 114969138764698900}
   - component: {fileID: 114257398639301762}
@@ -275,6 +274,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 1772208927038190, guid: be1663f5ec33cde4f8015bc7c504abff, type: 2}
   bulletPrefab: {fileID: 1250529628102822, guid: ed7a525149146d649a3c4e5ec7812022,
     type: 2}
+  speed: 2.4
 --- !u!114 &114091906919802746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,18 +415,6 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
---- !u!114 &114543427112581144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1195767069559798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e062ec6029b1741b491562d128587646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2.4
 --- !u!114 &114723179926383358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -500,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentsToDisable:
   - {fileID: 114188124295428934}
-  - {fileID: 114543427112581144}
+  - {fileID: 0}
   - {fileID: 20328978100184382}
   - {fileID: 81929429248185380}
   - {fileID: 0}

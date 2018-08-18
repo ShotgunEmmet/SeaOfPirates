@@ -36,7 +36,7 @@ public class NetworkBomb : NetworkBehaviour {
         {
             if ((player.transform.position - gameObject.transform.position).magnitude < 2f)
             {
-                var health = player.GetComponent<Health>();
+                var health = player.GetComponent<WayfarerHealth>();
                 if (health != null)
                 {
                     health.TakeDamage(10);

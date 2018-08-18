@@ -7,7 +7,7 @@ public class EnterVehicle : MonoBehaviour
 
     public GameObject prompt;
 
-    public Move vehicle;
+    public GameObject vehicle;
 
     public Transform exit;
 
@@ -33,10 +33,10 @@ public class EnterVehicle : MonoBehaviour
                     //this.GetComponent<SpriteRenderer>().enabled = false;
 
                     //collider.gameObject.GetComponent<Move>().Controlled = false;
-                    collider.gameObject.GetComponent<Move>().SetActive(false);
+                    //collider.gameObject.GetComponent<Move>().SetActive(false);I broke this here cause move no longer exists. Sorry
                     //vehicle.Controlled = true;
                     GameCamera.SetFocus(vehicle.gameObject);
-                    GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = vehicle.gameObject.GetComponent<Move>();
+                    //GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = vehicle.gameObject.GetComponent<Move>();
                 }
             }
         }
@@ -58,11 +58,11 @@ public class EnterVehicle : MonoBehaviour
                     //this.GetComponent<SpriteRenderer>().enabled = true;
                     
                     //GameObject.Find("Player").GetComponent<Move>().Controlled = true;
-                    GameObject.Find("Player").GetComponent<Move>().SetActive(true);
+                    //GameObject.Find("Player").GetComponent<Move>().SetActive(true);
                     GameObject.Find("Player").transform.position = exit.position;
                     //vehicle.Controlled = false;
                     GameCamera.SetFocus(GameObject.Find("Player"));
-                    GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = GameObject.Find("Player").GetComponent<Move>();
+                    //GameObject.Find("InputManager").GetComponent<InputManager>().controlableCharacter = GameObject.Find("Player").GetComponent<Move>();
                 }
             }
         }
