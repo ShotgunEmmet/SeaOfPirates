@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Engine/Examples/Networking/NetworkGame.unity
-    guid: e36ee44c248461b4cb1abfac13259ad8
-  - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 27f4486cc48414daa82390ea60d6c189
+  - enabled: 1
+    path: Assets/Scenes/OnlineCoop.unity
+    guid: 5e59f009848c94e36a3ee2801f7e0cf8
   m_configObjects: {}
