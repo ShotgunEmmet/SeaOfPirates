@@ -13,11 +13,12 @@ public class WayfarerInputHandler : NetworkBehaviour{
     private float speed = 2.4f;
     [SyncVar(hook = "OnChangeDirection")]
     Vector2 moveDirection;
-
+    public NetworkChest NearbyTriggerable;
     public IWeapon WeaponSlotA;
     public IWeapon WeaponSlotB;
     public IWeapon WeaponSlotC;
     private PlayerMotor motor;
+
     private void Start()
     {
         InitialiseComponents();
@@ -112,6 +113,15 @@ public class WayfarerInputHandler : NetworkBehaviour{
         if (projectile != null)
         {
             NetworkServer.Spawn(projectile);
+        }
+    }
+    public void SetNearbyTriggerable(NetworkChest nearbyTriggerable){
+        NearbyTriggerable = nearbyTriggerable;
+    }
+    public void LeaveNearbyTriggerable(NetworkChest nearbyTriggerable)
+    {
+        if(NearbyTriggerable ==nearbyTriggerable){
+            NearbyTriggerable = null; 
         }
     }
 }
