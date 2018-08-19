@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OnlineCoop.unity
     guid: 5e59f009848c94e36a3ee2801f7e0cf8
+  - enabled: 1
+    path: Assets/Scenes/NetworkGame.unity
+    guid: e36ee44c248461b4cb1abfac13259ad8
   m_configObjects: {}
