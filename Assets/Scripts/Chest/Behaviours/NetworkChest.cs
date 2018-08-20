@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NetworkChest : NetworkBehaviour {
+public class NetworkChest : NetworkBehaviour, ITriggerable {
     public List<WayfarerInputHandler> NearbyPlayers;
 	// Use this for initialization
 	void Start () {
@@ -14,14 +14,14 @@ public class NetworkChest : NetworkBehaviour {
 	void Update () {
 		
 	}
-    public void PlayerEnteredTrigger(WayfarerInputHandler wayfarer){
+    public void PlayerEnterTrigger(WayfarerInputHandler wayfarer){
         if (isServer && !NearbyPlayers.Contains(wayfarer))
         {
             NearbyPlayers.Add(wayfarer);
             RpcEnterTrigger(wayfarer.gameObject);
         }
     }
-    public void PlayerLeftTrigger(WayfarerInputHandler wayfarer){
+    public void PlayerExitTrigger(WayfarerInputHandler wayfarer){
         if (isServer && NearbyPlayers.Contains(wayfarer))
         {
             NearbyPlayers.Remove(wayfarer);
@@ -31,11 +31,17 @@ public class NetworkChest : NetworkBehaviour {
     [ClientRpc]
     void RpcEnterTrigger(GameObject wayfarer)
     {
-        wayfarer.GetComponent<WayfarerInputHandler>().SetNearbyTriggerable(this);
+        wayfarer.GetComponent<WayfarerInputHandler>().SetNearbyTriggerable(gameObject);
     }
     [ClientRpc]
     void RpcExitTrigger(GameObject wayfarer)
     {
-        wayfarer.GetComponent<WayfarerInputHandler>().LeaveNearbyTriggerable(this);
+        wayfarer.GetComponent<WayfarerInputHandler>().LeaveNearbyTriggerable(gameObject);
     }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
 }

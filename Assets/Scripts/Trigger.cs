@@ -44,7 +44,7 @@ public class Trigger : MonoBehaviour {
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    target.GetComponent<ITriggerable>().Trigger();
+                    //target.GetComponent<ITriggerable>().Trigger();
                     triggered = true;
                     GameObject.FindGameObjectWithTag("Prompt").GetComponent<Prompt>().Hide();
                 }

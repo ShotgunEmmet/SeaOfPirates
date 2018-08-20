@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface ITriggerable {
-    
-    void Trigger();
+    GameObject GetGameObject();
+    void PlayerEnterTrigger(WayfarerInputHandler wayfarerInputHandler);
+    void PlayerExitTrigger(WayfarerInputHandler wayfarerInputHandler);
 }

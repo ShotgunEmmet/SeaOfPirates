@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour, ITriggerable {
+public class Chest : MonoBehaviour {
 
     public enum AnimationType{ once, loop, destroy};
     public AnimationType animationType = AnimationType.once;
