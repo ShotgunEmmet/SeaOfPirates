@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 82823440554234878}
   - component: {fileID: 114256449960037856}
   - component: {fileID: 114598027606114044}
+  - component: {fileID: 95964175150152538}
   m_Layer: 0
   m_Name: NetworkChest
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953017921355250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.651054, y: 1.0377152, z: -1}
+  m_LocalPosition: {x: 22.88, y: 7.76, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4308225515701014}
@@ -124,7 +125,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a903b33a974c88f40a4ffce07b067ed7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -210,6 +211,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95964175150152538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953017921355250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 692c18ae371847941b18a382311e091b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114256449960037856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36742361cdbb4696855d1f418cc5a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer: 0
+  NearbyPlayers: []
 --- !u!114 &114662818827605022
 MonoBehaviour:
   m_ObjectHideFlags: 1

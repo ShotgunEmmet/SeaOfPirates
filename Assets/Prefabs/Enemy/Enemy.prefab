@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 61166155527654642}
   - component: {fileID: 114355245632626588}
   - component: {fileID: 114067690034987174}
-  - component: {fileID: 114133969515587490}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -180,20 +179,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &114133969515587490
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570966503232024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199cc27beedd34da681fc3f50f8759da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyOnDeath: 1
-  currentHealth: 100
-  healthBar: {fileID: 224894858469589148}
 --- !u!114 &114269083857237496
 MonoBehaviour:
   m_ObjectHideFlags: 1

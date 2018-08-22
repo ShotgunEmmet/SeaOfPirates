@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Footprint : MonoBehaviour {
 
-    private void Start()
-    {
-        GetComponent<Animator>().Play("Footprints");
-    }
-
     void DeleteOnEnd()
     {
         GameObject.Destroy(gameObject);

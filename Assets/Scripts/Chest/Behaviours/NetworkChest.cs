@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class NetworkChest : NetworkBehaviour, ITriggerable {
-    public List<WayfarerInputHandler> NearbyPlayers;
+
+    [SerializeField]
+    private int layer =0;
+    public int Layer { get { return layer; } }
+
+public List<WayfarerInputHandler> NearbyPlayers;
 	// Use this for initialization
 	void Start () {
 		
@@ -28,10 +33,16 @@ public class NetworkChest : NetworkBehaviour, ITriggerable {
             RpcExitTrigger(wayfarer.gameObject);
         }
     }
+    public void Activate() {
+        if (!GetComponent<Animator>().GetBool("Open")) {
+            GetComponent<Animator>().SetBool("Open", true);
+            GetComponent<AudioSource>().Play();
+        }
+    }
     [ClientRpc]
     void RpcEnterTrigger(GameObject wayfarer)
     {
-        wayfarer.GetComponent<WayfarerInputHandler>().SetNearbyTriggerable(gameObject);
+        wayfarer.GetComponent<WayfarerInputHandler>().SetNearbyTriggerable(layer, gameObject);
     }
     [ClientRpc]
     void RpcExitTrigger(GameObject wayfarer)

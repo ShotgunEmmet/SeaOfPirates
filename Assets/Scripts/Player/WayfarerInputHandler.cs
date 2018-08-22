@@ -1,9 +1,8 @@
-﻿using System;
-using Application;
+﻿using Application;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class WayfarerInputHandler : NetworkBehaviour{
+public class WayfarerInputHandler : NetworkBehaviour {
 
     public GameObject bombPrefab;
     public GameObject bulletPrefab;
@@ -58,6 +57,10 @@ public class WayfarerInputHandler : NetworkBehaviour{
         {
             CmdFireWeaponC();
         }
+        if (Input.GetButtonDown("Action1"))
+        {
+            ActivateTrigerable();
+        }
     }
 
     private void ProcessDirectionInput()
@@ -98,7 +101,7 @@ public class WayfarerInputHandler : NetworkBehaviour{
     {
         var projectile = WeaponSlotB.Fire(bulletPrefab);
         Rigidbody2D bulletBody = projectile.GetComponent<Rigidbody2D>();
-        Debug.Log("b vel:"+bulletBody.velocity);
+        Debug.Log("b vel:" + bulletBody.velocity);
         CreateOnServer(projectile);
     }
     [Command]
@@ -109,19 +112,40 @@ public class WayfarerInputHandler : NetworkBehaviour{
     }
     private static void CreateOnServer(GameObject projectile)
     {
-        Debug.Log(projectile);
         if (projectile != null)
         {
+            Debug.Log(projectile);
             NetworkServer.Spawn(projectile);
         }
     }
-    public void SetNearbyTriggerable(GameObject nearbyTriggerable){
-        NearbyTriggerable = nearbyTriggerable;
+    public void SetNearbyTriggerable(int layer, GameObject nearbyTriggerable)
+    {
+        if (NearbyTriggerable != null)
+        {
+            if(NearbyTriggerable.GetComponent<ITriggerable>().Layer < nearbyTriggerable.GetComponent<ITriggerable>().Layer)
+            {
+                NearbyTriggerable = nearbyTriggerable;
+            }
+        }
+        else
+        {
+            NearbyTriggerable = nearbyTriggerable;
+        }
     }
     public void LeaveNearbyTriggerable(GameObject nearbyTriggerable)
     {
-        if(NearbyTriggerable ==nearbyTriggerable){
-            NearbyTriggerable = null; 
+        if (NearbyTriggerable == nearbyTriggerable) {
+            NearbyTriggerable = null;
+        }
+
+    }
+
+    private void ActivateTrigerable()
+    {
+        if (NearbyTriggerable != null)
+        {
+            NearbyTriggerable.GetComponent<ITriggerable>().Activate();
         }
     }
+
 }
