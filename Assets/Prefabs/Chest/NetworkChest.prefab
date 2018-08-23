@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114256449960037856}
   - component: {fileID: 114598027606114044}
   - component: {fileID: 95964175150152538}
+  - component: {fileID: 114930673708054822}
   m_Layer: 0
   m_Name: NetworkChest
   m_TagString: Untagged
@@ -260,7 +261,7 @@ MonoBehaviour:
     i14: 2
     i15: 210
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114598027606114044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,6 +286,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52105874d7f0a4565b233edcf31878f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114930673708054822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953017921355250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95964175150152538}
+  m_ParameterSendBits: 1
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!212 &212656433847742420
 SpriteRenderer:
   m_ObjectHideFlags: 1

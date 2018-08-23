@@ -33,12 +33,15 @@ public List<WayfarerInputHandler> NearbyPlayers;
             RpcExitTrigger(wayfarer.gameObject);
         }
     }
-    public void Activate() {
-        if (!GetComponent<Animator>().GetBool("Open")) {
+    public void Activate()
+    {
+        if (!GetComponent<Animator>().GetBool("Open"))
+        {
             GetComponent<Animator>().SetBool("Open", true);
             GetComponent<AudioSource>().Play();
         }
     }
+
     [ClientRpc]
     void RpcEnterTrigger(GameObject wayfarer)
     {

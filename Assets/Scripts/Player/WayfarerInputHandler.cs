@@ -59,7 +59,7 @@ public class WayfarerInputHandler : NetworkBehaviour {
         }
         if (Input.GetButtonDown("Action1"))
         {
-            ActivateTrigerable();
+            CmdActivateTrigerable();
         }
     }
 
@@ -140,7 +140,8 @@ public class WayfarerInputHandler : NetworkBehaviour {
 
     }
 
-    private void ActivateTrigerable()
+    [Command]
+    private void CmdActivateTrigerable()
     {
         if (NearbyTriggerable != null)
         {
