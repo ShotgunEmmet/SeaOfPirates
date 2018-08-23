@@ -35,7 +35,8 @@ public class NetworkBoat : NetworkBehaviour, ITriggerable
             RpcExitTrigger(wayfarer.gameObject);
         }
     }
-    public void Activate()
+    [ClientRpc]
+    public void RpcActivate()
     {
         //make the boat controllable and the player not somehow (perhaps PlayerState), maybe have a toggle so the WayfarerInputHandler can deactivate
     }

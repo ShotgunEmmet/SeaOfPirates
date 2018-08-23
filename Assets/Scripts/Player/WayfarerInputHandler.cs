@@ -145,7 +145,8 @@ public class WayfarerInputHandler : NetworkBehaviour {
     {
         if (NearbyTriggerable != null)
         {
-            NearbyTriggerable.GetComponent<ITriggerable>().Activate();
+            //NearbyTriggerable.GetComponent<ITriggerable>().RpcActivate();
+            NearbyTriggerable.GetComponent<NetworkChest>().RpcActivate();//[BUG] the ClientRpc only works when specifying NetworkChest and not ITriggerable
         }
     }
 

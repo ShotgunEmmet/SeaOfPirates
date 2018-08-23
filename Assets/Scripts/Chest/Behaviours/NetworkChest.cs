@@ -9,6 +9,9 @@ public class NetworkChest : NetworkBehaviour, ITriggerable {
     private int layer =0;
     public int Layer { get { return layer; } }
 
+    [SerializeField]
+    private GameObject prompt;
+
 public List<WayfarerInputHandler> NearbyPlayers;
 	// Use this for initialization
 	void Start () {
@@ -33,12 +36,17 @@ public List<WayfarerInputHandler> NearbyPlayers;
             RpcExitTrigger(wayfarer.gameObject);
         }
     }
-    public void Activate()
+    [ClientRpc]
+    public void RpcActivate()
     {
         if (!GetComponent<Animator>().GetBool("Open"))
         {
             GetComponent<Animator>().SetBool("Open", true);
             GetComponent<AudioSource>().Play();
+            if (prompt)
+            {
+                prompt.SetActive(false);
+            }
         }
     }
 
@@ -46,11 +54,19 @@ public List<WayfarerInputHandler> NearbyPlayers;
     void RpcEnterTrigger(GameObject wayfarer)
     {
         wayfarer.GetComponent<WayfarerInputHandler>().SetNearbyTriggerable(layer, gameObject);
+        if (prompt && wayfarer.GetComponent<NetworkBehaviour>().isLocalPlayer)
+        {
+            prompt.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
     [ClientRpc]
     void RpcExitTrigger(GameObject wayfarer)
     {
         wayfarer.GetComponent<WayfarerInputHandler>().LeaveNearbyTriggerable(gameObject);
+        if (prompt && wayfarer.GetComponent<NetworkBehaviour>().isLocalPlayer)
+        {
+            prompt.GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     public GameObject GetGameObject()
