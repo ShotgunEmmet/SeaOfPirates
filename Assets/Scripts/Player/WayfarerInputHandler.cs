@@ -145,7 +145,7 @@ public class WayfarerInputHandler : NetworkBehaviour {
     {
         if (NearbyTriggerable != null)
         {
-            NearbyTriggerable.GetComponent<ITriggerable>().Activate();
+            NearbyTriggerable.GetComponent<ITriggerable>().Activate(gameObject);
         }
     }
 
