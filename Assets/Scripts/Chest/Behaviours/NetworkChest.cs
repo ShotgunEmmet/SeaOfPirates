@@ -36,6 +36,10 @@ public List<WayfarerInputHandler> NearbyPlayers;
             RpcExitTrigger(wayfarer.gameObject);
         }
     }
+    public void Activate()
+    {
+        RpcActivate();
+    }
     [ClientRpc]
     public void RpcActivate()
     {
