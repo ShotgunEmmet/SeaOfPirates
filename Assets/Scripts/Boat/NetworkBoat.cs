@@ -10,8 +10,12 @@ public class NetworkBoat : NetworkBehaviour, ITriggerable
     public int Layer { get { return layer; } }
 
     public List<WayfarerInputHandler> NearbyPlayers;
-	// Use this for initialization
-	void Start () {
+
+    [SerializeField]
+    private BoadInterior interior;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -37,7 +41,13 @@ public class NetworkBoat : NetworkBehaviour, ITriggerable
     }
     public void Activate(GameObject triggerObject)
     {
-        //make the boat controllable and the player not somehow (perhaps PlayerState), maybe have a toggle so the WayfarerInputHandler can deactivate
+        RpcActivate(triggerObject);
+    }
+    [ClientRpc]
+    void RpcActivate(GameObject triggerObject)
+    {
+        triggerObject.transform.SetPositionAndRotation(interior.transform.position, triggerObject.transform.rotation);
+        triggerObject.transform.SetParent(interior.transform);
     }
 
     [ClientRpc]
