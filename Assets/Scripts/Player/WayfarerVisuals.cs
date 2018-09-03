@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WayfarerVisuals : MonoBehaviour {
 
+    public Camera playerCamera;
     public GameObject trail;
     
     private Vector3 oldPos = new Vector3();
@@ -21,4 +22,12 @@ public class WayfarerVisuals : MonoBehaviour {
             oldPos = transform.position;
         }
 	}
+
+    public void Reset()
+    {
+        playerCamera.transform.SetParent(transform);
+        playerCamera.transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, playerCamera.transform.position.z), Quaternion.identity);
+
+        oldPos = transform.position;
+    }
 }

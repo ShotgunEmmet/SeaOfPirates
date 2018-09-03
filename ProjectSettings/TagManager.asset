@@ -7,6 +7,8 @@ TagManager:
   - Prompt
   - InputManager
   - MiniMapCamera
+  - ShipInterior
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

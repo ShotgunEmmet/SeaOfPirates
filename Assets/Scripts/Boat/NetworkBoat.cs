@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class NetworkBoat : NetworkBehaviour, ITriggerable
 {
@@ -48,6 +49,15 @@ public class NetworkBoat : NetworkBehaviour, ITriggerable
     {
         triggerObject.transform.SetPositionAndRotation(interior.transform.position, triggerObject.transform.rotation);
         triggerObject.transform.SetParent(interior.transform);
+
+        if (triggerObject.gameObject.GetComponent<WayfarerInputHandler>().isLocalPlayer)
+        {
+            GameObject.FindGameObjectWithTag("ShipInterior").GetComponent<RawImage>().enabled = true;
+            //GameObject playerCamera = triggerObject.gameObject.GetComponentInChildren<Camera>().gameObject;
+            GameObject playerCamera = triggerObject.GetComponentInChildren<WayfarerVisuals>().playerCamera.gameObject;
+            playerCamera.transform.SetParent(transform);
+            playerCamera.transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, playerCamera.transform.position.z), Quaternion.identity);
+        }
     }
 
     [ClientRpc]

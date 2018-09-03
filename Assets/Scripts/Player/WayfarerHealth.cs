@@ -67,6 +67,9 @@ public class WayfarerHealth : NetworkBehaviour
 
             // Set the player’s position to the chosen spawn point
             transform.position = spawnPoint;
+
+            // Reset the player's camera and animations
+            GetComponent<WayfarerVisuals>().Reset();
         }
     }
 }
