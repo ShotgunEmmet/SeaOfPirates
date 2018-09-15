@@ -12,7 +12,7 @@ public class NetworkChest : NetworkBehaviour, ITriggerable {
     [SerializeField]
     private GameObject prompt;
 
-public List<WayfarerInputHandler> NearbyPlayers;
+    public List<WayfarerInputHandler> NearbyPlayers;
 	// Use this for initialization
 	void Start () {
 		

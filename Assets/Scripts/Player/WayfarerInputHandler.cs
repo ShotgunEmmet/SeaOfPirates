@@ -16,7 +16,20 @@ public class WayfarerInputHandler : NetworkBehaviour {
     public IWeapon WeaponSlotA;
     public IWeapon WeaponSlotB;
     public IWeapon WeaponSlotC;
-    private PlayerMotor motor;
+    private IMotor motor;
+
+    public IMotor Motor
+    {
+        get
+        {
+            return motor;
+        }
+
+        set
+        {
+            motor = value;
+        }
+    }
 
     private void Start()
     {

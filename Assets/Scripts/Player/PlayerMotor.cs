@@ -1,8 +1,9 @@
 ﻿using System;
+using Application;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMotor : MonoBehaviour
+public class PlayerMotor : MonoBehaviour,IMotor
 {
     private Vector2 velocity = Vector2.zero;
 
@@ -13,7 +14,7 @@ public class PlayerMotor : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    internal void Move(Vector2 move)
+    public void Move(Vector2 move)
     {
         velocity = move;
     }
